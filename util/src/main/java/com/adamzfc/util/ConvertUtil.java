@@ -1,5 +1,6 @@
 package com.adamzfc.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -48,4 +49,35 @@ public final class ConvertUtil {
         view.draw(canvas);
         return ret;
     }
+
+    /**
+     * dp to int px
+     * @param dp dp
+     * @param context context
+     * @return int px
+     */
+    public static int dp2px(float dp, @NonNull Context context) {
+        return Math.round(dp * context.getResources().getDisplayMetrics().density);
+    }
+
+    /**
+     * px to int dp
+     * @param px px
+     * @param context context
+     * @return int dp
+     */
+    public static int px2dp(float px, @NonNull Context context) {
+        return Math.round(px * context.getResources().getDisplayMetrics().scaledDensity);
+    }
+
+    /**
+     * px to int sp
+     * @param px px
+     * @param context context
+     * @return int sp
+     */
+    public static int px2sp(float px, @NonNull Context context) {
+        return Math.round(px / context.getResources().getDisplayMetrics().scaledDensity);
+    }
+
 }
