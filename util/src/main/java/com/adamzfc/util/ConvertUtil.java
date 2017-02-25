@@ -56,9 +56,8 @@ public final class ConvertUtil {
      * @param context context
      * @return int px
      */
-    public static int dp2px(float dp, Context context) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
+    public static int dp2px(float dp, @NonNull Context context) {
+        return Math.round(dp * context.getResources().getDisplayMetrics().density);
     }
 
     /**
@@ -67,20 +66,18 @@ public final class ConvertUtil {
      * @param context context
      * @return int dp
      */
-    public static int px2dp(float px, Context context) {
-        final float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (px * scaledDensity + 0.5f);
+    public static int px2dp(float px, @NonNull Context context) {
+        return Math.round(px * context.getResources().getDisplayMetrics().scaledDensity);
     }
 
     /**
-     * px 2 int sp
+     * px to int sp
      * @param px px
      * @param context context
      * @return int sp
      */
-    public static int px2sp(float px, Context context) {
-        final float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (px / scaledDensity + 0.5f);
+    public static int px2sp(float px, @NonNull Context context) {
+        return Math.round(px / context.getResources().getDisplayMetrics().scaledDensity);
     }
 
 }
