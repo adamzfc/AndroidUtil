@@ -30,26 +30,21 @@ import java.util.Map;
 public class CrashUtil implements Thread.UncaughtExceptionHandler {
     private static final String TAG = "CrashUtil";
     private Thread.UncaughtExceptionHandler mDefaultHandler;
-    private volatile static CrashUtil instance = null;
     private Context mContext;
     /**
      * use for save device infos and exception infos
      */
     private Map<String, String> infos = new HashMap<>();
 
+    private static class CrashUtilHolder {
+        private static final CrashUtil INSTANCE = new CrashUtil();
+    }
 
     private CrashUtil() {
     }
 
     public static CrashUtil getInstance() {
-        if (instance == null) {
-            synchronized (CrashUtil.class) {
-                if (instance == null) {
-                    instance = new CrashUtil();
-                }
-            }
-        }
-        return instance;
+        return CrashUtilHolder.INSTANCE;
     }
 
     public void init(Context context) {
