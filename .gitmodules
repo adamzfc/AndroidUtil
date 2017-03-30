@@ -1,0 +1,3 @@
+[submodule "buildsystem/quality"]
+	path = buildsystem/quality
+	url = https://github.com/adamzfc/quality
