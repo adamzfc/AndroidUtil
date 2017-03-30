@@ -19,7 +19,7 @@ public final class AppUtil {
      * @return versionCode or -1
      */
     public static int getAppVersionCode(@NonNull Context context) {
-        checkNotNull(context);
+        checkNotNull(context, "context can not be null");
         return getAppVersionCode(context, context.getPackageName());
     }
 
@@ -30,7 +30,7 @@ public final class AppUtil {
      * @return versionCode or -1
      */
     public static int getAppVersionCode(@NonNull Context context, @Nullable String packageName) {
-        checkNotNull(context);
+        checkNotNull(context, "context can not be null");
         if (isEmpty(packageName)) return -1;
         try {
             PackageManager pm = context.getPackageManager();
@@ -53,4 +53,13 @@ public final class AppUtil {
             return reference;
         }
     }
+
+    private static <T> T checkNotNull(T reference, @NonNull String message) {
+        if (reference == null) {
+            throw new NullPointerException(message);
+        } else {
+            return reference;
+        }
+    }
+
 }
