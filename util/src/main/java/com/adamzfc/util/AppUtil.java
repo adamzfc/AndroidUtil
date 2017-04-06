@@ -11,7 +11,6 @@ import android.text.TextUtils;
  * app util
  * Created by adamzfc on 3/29/17.
  */
-
 public final class AppUtil {
     /**
      * get application's versionCode
